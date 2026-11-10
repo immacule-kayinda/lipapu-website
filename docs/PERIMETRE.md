@@ -123,7 +123,7 @@ Admin / Site  ──►        │
 
 - Android milieu/bas de gamme dominant → app légère, images WebP redimensionnées côté client.
 - Réseau lent et instable → pagination courte, payloads petits, retries, mode dégradé.
-- **OTP** : délivrabilité SMS à tester tôt (Twilio ; plan B WhatsApp ou agrégateur local).
+- **OTP** : délivrabilité à tester tôt. Recommandation de la recherche (à confirmer) : WhatsApp en canal principal, SMS en repli (Twilio), plafonds anti-fraude ; voir `BUSINESS.md` §9.
 - Paiement : cartes bancaires peu répandues → mobile money (M-Pesa, Airtel Money, Orange Money) à étudier avant la monétisation.
 
 ## 5. Algorithme de matching
@@ -184,7 +184,7 @@ interface VerificationProvider {
 
 ## 7. Modèle de données (haut niveau)
 
-À détailler dans une étape suivante. Entités principales :
+Détail et questions ouvertes : voir `DATA-MODEL.md`. Entités principales :
 
 - `users`, `auth_identities` (téléphone, Apple, Google), `devices`
 - `profiles`, `profile_fields`, `photos`, `prompts`, `prompt_answers`

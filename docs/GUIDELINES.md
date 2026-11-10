@@ -2,7 +2,7 @@
 
 > À relire au début de chaque étape de travail (conception, design, code, contenu).
 > Ce document est la mémoire du projet. Si une demande contredit un point ici, **on le signale avant d'agir**, puis on met ce document à jour si la décision change.
-> Documents liés : `PERIMETRE.md` (périmètre et architecture), `ECRANS.md` (écrans et parcours), `ADMIN-SCOPE.md` (admin : rôles et configuration), `BUSINESS.md` (business model), `design/tokens.json` (design tokens), `INTERFACE.md` (guideline de ce repo ; les autres interfaces ont leur propre repo).
+> Documents liés : `PERIMETRE.md` (périmètre et architecture), `ECRANS.md` (écrans et parcours), `ADMIN-SCOPE.md` (admin : rôles et configuration), `BUSINESS.md` (business model), `DATA-MODEL.md` (modèle de données), `design/tokens.json` (design tokens), `INTERFACE.md` (guideline de ce repo ; les autres interfaces ont leur propre repo).
 
 ## 1. Le projet en une phrase
 
@@ -42,7 +42,9 @@
 | Typographie | Instrument Serif (titres, prénoms, prompts) + Inter (interface) |
 | Logo | Deux anneaux entrelacés + mot « Joga » |
 | Ton | Tutoiement partout (app et site), vouvoiement dans les pages légales seulement. Confirmé |
-| Monétisation | Freemium (abonnement « Joga+ ») comme piste principale, à tester après le lancement ; la v1 est gratuite. La sécurité n'est jamais payante, pas de publicité. Voir `BUSINESS.md`. Recherche sur les paiements et le marché en cours |
+| Monétisation | Freemium (abonnement « Joga+ ») comme piste principale, à tester après le lancement ; la v1 est gratuite. La sécurité n'est jamais payante, pas de publicité. Voir `BUSINESS.md`. Recherche faite le 2026-11-10 (résultats au §9 de `BUSINESS.md`) |
+| Paiement de Joga+ | Achats intégrés Apple et Google d'abord (obligatoire pour les abonnements dans l'app) ; mobile money comme second canal à étudier (pawaPay en premier candidat), à travers une interface `PaymentProvider`. Pas de bouton mobile money dans l'app pour l'instant |
+| Codes de connexion | Recommandation de la recherche, à confirmer : WhatsApp en canal principal, SMS en repli, plafonds anti-fraude |
 | Calendrier | Pas de date imposée. Le projet peut glisser |
 | Admin : rôles | 8 rôles validés (propriétaire, administrateur, responsable modération, modérateur, support, éditeur de contenu, analyste, finance) avec matrice de permissions et second avis pour les actions sensibles. Voir `ADMIN-SCOPE.md` |
 | Admin : connexion | Compte nominatif (un compte par personne, créé sur invitation), e-mail + second facteur obligatoire. Pas de compte partagé ni d'inscription libre |
@@ -93,11 +95,12 @@ Paiement et abonnement · messages vocaux · appels audio et vidéo · vérifica
 - Espace web « Mon compte » après le lancement (suppression de compte, export, abonnement, par code SMS) : à confirmer.
 - Lingala : les polices contiennent-elles les lettres ɛ et ɔ ?
 - OTP : délivrabilité SMS en RDC (Twilio, WhatsApp, agrégateur local).
-- Business : résultats de la recherche (règles des stores, mobile money, concurrents à Kinshasa), devise, prix, seuil d'ouverture de l'offre payante.
+- Business : prix de Joga+, devise, seuil d'ouverture de l'offre payante, choix de l'agrégateur de mobile money. Vérifications listées dans `BUSINESS.md` §9.
+- Cadre légal congolais (Code du numérique, TVA numérique, rapatriement des fonds, société) : à valider par un juriste local.
 - Ville et communes de lancement : liste exacte.
 - Vérification : seuil à partir duquel passer d'une validation manuelle à AWS.
 - Cadre légal : conformité des données personnelles en RDC et dans les stores.
-- Modèle de données : à rédiger puis valider (inclut rôles, configuration, droits, paiements, relation de couple).
+- Modèle de données : brouillon dans `DATA-MODEL.md`, à valider (inclut rôles, configuration, droits, paiements, relation de couple).
 - Espace couple : liste des mini-jeux, forme (mode « Nous » dans la même app), « Nous sommes en couple » dès la v1 ou non.
 
 ## 9. Journal des décisions
@@ -114,3 +117,5 @@ Paiement et abonnement · messages vocaux · appels audio et vidéo · vérifica
 | 2026-11-10 | Refusé : textes de l'interface modifiables à distance (trop lourd). Corrections de traduction via mise à jour de l'app |
 | 2026-11-10 | Business model posé comme sujet de premier plan (`BUSINESS.md`) ; recherche lancée sur paiements, stores et marché |
 | 2026-11-10 | Espace couple : idée de mini-jeux simples à distance, à préparer sans le construire en v1 |
+| 2026-11-10 | Recherche business terminée (stores, mobile money, marché, concurrents, cadre légal, codes de connexion). Conclusions dans `BUSINESS.md` §9 : achats intégrés d'abord, mobile money en second canal à étudier, v1 gratuite |
+| 2026-11-10 | Brouillon du modèle de données (`DATA-MODEL.md`) |
