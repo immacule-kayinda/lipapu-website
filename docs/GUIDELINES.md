@@ -2,7 +2,7 @@
 
 > À relire au début de chaque étape de travail (conception, design, code, contenu).
 > Ce document est la mémoire du projet. Si une demande contredit un point ici, **on le signale avant d'agir**, puis on met ce document à jour si la décision change.
-> Documents liés : `PERIMETRE.md` (périmètre et architecture), `ECRANS.md` (écrans et parcours), `design/tokens.json` (design tokens), `INTERFACE.md` (guideline de ce repo ; les autres interfaces ont leur propre repo).
+> Documents liés : `PERIMETRE.md` (périmètre et architecture), `ECRANS.md` (écrans et parcours), `ADMIN-SCOPE.md` (admin : rôles et configuration), `BUSINESS.md` (business model), `design/tokens.json` (design tokens), `INTERFACE.md` (guideline de ce repo ; les autres interfaces ont leur propre repo).
 
 ## 1. Le projet en une phrase
 
@@ -41,13 +41,18 @@
 | Design | Noir et blanc, photos en couleur, clair par défaut avec mode sombre |
 | Typographie | Instrument Serif (titres, prénoms, prompts) + Inter (interface) |
 | Logo | Deux anneaux entrelacés + mot « Joga » |
-| Ton | Tutoiement dans l'app, vouvoiement dans les pages légales (à confirmer) |
-| Monétisation | Non décidée. Piste : freemium (quota de likes, filtres avancés payants). Quotas et filtres avancés derrière des drapeaux de configuration |
+| Ton | Tutoiement partout (app et site), vouvoiement dans les pages légales seulement. Confirmé |
+| Monétisation | Freemium (abonnement « Joga+ ») comme piste principale, à tester après le lancement ; la v1 est gratuite. La sécurité n'est jamais payante, pas de publicité. Voir `BUSINESS.md`. Recherche sur les paiements et le marché en cours |
 | Calendrier | Pas de date imposée. Le projet peut glisser |
+| Admin : rôles | 8 rôles validés (propriétaire, administrateur, responsable modération, modérateur, support, éditeur de contenu, analyste, finance) avec matrice de permissions et second avis pour les actions sensibles. Voir `ADMIN-SCOPE.md` |
+| Admin : connexion | Compte nominatif (un compte par personne, créé sur invitation), e-mail + second facteur obligatoire. Pas de compte partagé ni d'inscription libre |
+| Configuration | Tout réglage de l'app est un paramètre défini une fois, versionné, avec portée, bornes et audit ; l'admin génère ses formulaires depuis ces définitions. Les garde-fous de sécurité restent dans le code |
+| Textes de l'interface | Embarqués dans l'app, pas de textes distants. Les corrections de traduction (lingala) passent par une mise à jour de l'app, y compris à distance via EAS Update |
+| Espace couple | Idée pour plus tard : quelques mini-jeux simples à jouer à distance à deux. Non construit en v1, mais à préparer (relation de couple dans le modèle de données, temps réel disponible) |
 
 ## 4. Hors périmètre v1
 
-Paiement et abonnement · messages vocaux · appels audio et vidéo · vérification d'identité par pièce · orientations autres qu'hétérosexuelle · événements, groupes, fonctions sociales · politique et ethnie dans le profil.
+Paiement et abonnement · messages vocaux · appels audio et vidéo · vérification d'identité par pièce · orientations autres qu'hétérosexuelle · événements, groupes, fonctions sociales · politique et ethnie dans le profil · espace couple et mini-jeux (prévus plus tard).
 
 ## 5. Règles non négociables (toutes interfaces)
 
@@ -61,6 +66,8 @@ Paiement et abonnement · messages vocaux · appels audio et vidéo · vérifica
 8. **Chaque action de modération est tracée** (qui, quoi, quand, pourquoi).
 9. **Tout ce qui est partagé entre repos passe par l'OpenAPI du backend et par `tokens.json`**, jamais par copier-coller.
 10. **Les textes de l'interface suivent la voix de la charte** : direct, chaleureux, sans pression.
+11. **Les champs à contour (`border-strong`) se posent sur le fond d'écran, jamais sur une carte grise** : sur `surface`, le contraste tombe sous 3:1.
+12. **La sécurité n'est jamais payante** : vérification, signalement, blocage, suppression de compte restent gratuits pour tous.
 
 ## 6. Définition de « terminé » (pour toute fonctionnalité)
 
@@ -83,13 +90,15 @@ Paiement et abonnement · messages vocaux · appels audio et vidéo · vérifica
 ## 8. Questions ouvertes
 
 - Nom définitif : vérification de marque et de disponibilité (stores, domaine).
-- Tutoiement : confirmé ou non.
+- Espace web « Mon compte » après le lancement (suppression de compte, export, abonnement, par code SMS) : à confirmer.
 - Lingala : les polices contiennent-elles les lettres ɛ et ɔ ?
 - OTP : délivrabilité SMS en RDC (Twilio, WhatsApp, agrégateur local).
-- Monétisation : modèle, prix, moyens de paiement (mobile money).
+- Business : résultats de la recherche (règles des stores, mobile money, concurrents à Kinshasa), devise, prix, seuil d'ouverture de l'offre payante.
 - Ville et communes de lancement : liste exacte.
 - Vérification : seuil à partir duquel passer d'une validation manuelle à AWS.
 - Cadre légal : conformité des données personnelles en RDC et dans les stores.
+- Modèle de données : à rédiger puis valider (inclut rôles, configuration, droits, paiements, relation de couple).
+- Espace couple : liste des mini-jeux, forme (mode « Nous » dans la même app), « Nous sommes en couple » dès la v1 ou non.
 
 ## 9. Journal des décisions
 
@@ -100,3 +109,8 @@ Paiement et abonnement · messages vocaux · appels audio et vidéo · vérifica
 | 2026-11-09 | Nom retenu : Joga. Direction visuelle : mélange éditorial + nuit, noir et blanc, photos en couleur |
 | 2026-11-10 | Charte graphique v0.1 (marque, fondations, composants) et `tokens.json` |
 | 2026-11-10 | Guidelines par interface et inventaire des écrans |
+| 2026-11-10 | Initialisation des 4 projets (mobile, backend, site, admin) |
+| 2026-11-10 | Validé : 8 rôles de l'admin et matrice de permissions ; connexion par e-mail + second facteur ; tutoiement partout sauf pages légales |
+| 2026-11-10 | Refusé : textes de l'interface modifiables à distance (trop lourd). Corrections de traduction via mise à jour de l'app |
+| 2026-11-10 | Business model posé comme sujet de premier plan (`BUSINESS.md`) ; recherche lancée sur paiements, stores et marché |
+| 2026-11-10 | Espace couple : idée de mini-jeux simples à distance, à préparer sans le construire en v1 |

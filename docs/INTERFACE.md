@@ -32,7 +32,7 @@ Le site **présente** l'app et **rassure**. Il ne reproduit aucune fonction de l
 3. **Photos et visuels** reflétant les personnes réelles de Kinshasa. Pas de banque d'images occidentale. Consentement et droits d'image clairs.
 4. **Mobile d'abord** : la plupart des visiteurs viendront d'un téléphone Android avec un réseau lent.
 5. **Aucune valeur de design en dur** : tokens uniquement.
-6. **Voix** : directe, chaleureuse, sans promesse excessive. Pas de « trouve l'amour en 5 minutes ». Rappeler le positionnement sérieux.
+6. **Voix** : tutoiement (comme l'app), directe, chaleureuse, sans promesse excessive ; vouvoiement seulement dans les pages légales. Pas de « trouve l'amour en 5 minutes ». Rappeler le positionnement sérieux.
 
 ## Règles techniques
 
@@ -46,7 +46,7 @@ Le site **présente** l'app et **rassure**. Il ne reproduit aucune fonction de l
 
 ## À ne pas faire
 
-- Ne pas ajouter de connexion, de profils ou de messagerie sur le site.
+- Ne pas ajouter de connexion, de profils ou de messagerie sur le site. Seule exception à étudier après le lancement : un petit espace « Mon compte » (suppression, export, abonnement), accessible par code SMS.
 - Ne pas utiliser de couleur de marque : l'identité est noir et blanc.
 - Ne pas écrire de texte légal sans validation d'un juriste.
 - Ne pas publier de photos de personnes sans accord écrit.

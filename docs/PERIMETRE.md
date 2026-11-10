@@ -1,10 +1,10 @@
-# Lipapu — Périmètre et architecture (v1)
+# Joga — Périmètre et architecture (v1)
 
-Statut : brouillon de travail, à valider. Dernière mise à jour : 2026-11-09.
+Statut : brouillon de travail, à valider. Dernière mise à jour : 2026-11-10. (Ancien nom de travail : Lipapu.) Documents associés : `ADMIN-SCOPE.md`, `BUSINESS.md`.
 
 ## 1. Vision
 
-Lipapu est une application mobile de rencontres orientée **relations sérieuses**, dans l'esprit de Hinge : profils riches (photos + prompts), interaction ciblée (on réagit à un élément précis du profil), likes limités, conversation uniquement après un match.
+Joga est une application mobile de rencontres orientée **relations sérieuses**, dans l'esprit de Hinge : profils riches (photos + prompts), interaction ciblée (on réagit à un élément précis du profil), likes limités, conversation uniquement après un match.
 
 - **Marché de lancement** : Kinshasa (RDC), puis d'autres villes.
 - **Cible** : hétérosexuelle exclusivement.
@@ -65,7 +65,7 @@ Contrat entre repos : le backend publie une spécification **OpenAPI** ; les cli
 - Modération automatique des photos à l'upload (Google Cloud Vision SafeSearch).
 - **Vérification du profil par selfie** (voir §6) : badge « profil vérifié ».
 - Détection de signaux d'arnaque dans le chat (liens, numéros, demandes d'argent envoyés trop tôt).
-- Panneau d'admin : file de signalements, file de vérifications, gestion des comptes.
+- Panneau d'admin : voir `ADMIN-SCOPE.md` (modération, membres, configuration complète, business, équipe et rôles).
 - Pages légales : CGU, confidentialité, suppression de compte (exigées par les stores).
 
 **Site web**
@@ -179,7 +179,7 @@ interface VerificationProvider {
 
 ### Données et vie privée
 
-- Aucun gabarit biométrique (embedding) stocké par Lipapu.
+- Aucun gabarit biométrique (embedding) stocké par Joga.
 - Consentement explicite avant la vérification ; chiffrement au repos ; accès restreint aux modérateurs.
 
 ## 7. Modèle de données (haut niveau)
@@ -195,12 +195,16 @@ interface VerificationProvider {
 - `verifications` (provider, statut, motif, dates ; pas de média conservé)
 - `notifications`, `push_tokens`
 - `outbox_events`
+- Admin : `admin_users`, `roles`, `permissions`, `admin_sessions`, `audit_log`
+- Configuration : `config_definitions`, `config_versions`, `config_overrides` (portée : ville, plateforme, segment)
+- Business : `products`, `prices`, `entitlements`, `subscriptions`, `payments`, `refunds`
+- Plus tard (couple) : `couples` (état : aucune, active, terminée ; date du match), `couple_games`
 
 Règles de conception : `gender` et `looking_for` séparés (extensible), toutes les chaînes d'interface traduites via clés i18n, quotas configurables.
 
 ## 8. Phases de construction
 
-1. **Fondations** : monorepo, CI/CD, Postgres, auth OTP + OAuth, i18n, observabilité.
+1. **Fondations** : monorepo, CI/CD, Postgres, auth OTP + OAuth, i18n, observabilité, service de configuration, rôles et authentification de l'admin.
 2. **Profil et médias** : édition de profil, upload, pipeline photo, modération photo.
 3. **Vérification** : défi selfie, pré-tri, file d'admin, interface `VerificationProvider`.
 4. **Découverte** : préférences, workers de feed, likes, quotas, likes reçus, matchs.
@@ -212,7 +216,8 @@ Règles de conception : `gender` et `looking_for` séparés (extensible), toutes
 
 ## 9. Monétisation (à décider avant le lancement)
 
-- Piste : freemium à la Hinge. Gratuit : quota de likes quotidien. Premium « Lipapu+ » : likes illimités, filtres avancés, voir qui a liké.
+- Voir `BUSINESS.md`. Piste principale : freemium (« Joga+ ») à tester après le lancement ; la v1 est gratuite. La sécurité n'est jamais payante.
+- Gratuit : quota de likes quotidien. « Joga+ » : plus de likes, filtres avancés, voir qui a liké.
 - Options de paiement à étudier : stores (Apple/Google, via RevenueCat) et mobile money local.
 - En v1 : tout gratuit, mais quotas et filtres avancés derrière des drapeaux de configuration.
 
@@ -230,9 +235,18 @@ Règles de conception : `gender` et `looking_for` séparés (extensible), toutes
 | Postgres Railway | Pas de haute dispo managée : sauvegardes à tester. |
 | Biais de la reconnaissance faciale | À mesurer sur des visages locaux avant d'automatiser avec AWS. |
 
-## 11. Prochaines étapes
+## 11. Espace couple (idée pour plus tard)
+
+Quand deux personnes deviennent un couple, elles peuvent jouer ensemble, à distance, à quelques mini-jeux simples. Hors v1, mais à préparer :
+- une relation de couple dans le modèle de données (état, date du match) ;
+- des jeux au tour par tour (asynchrones), adaptés aux réseaux lents, qui s'appuient sur le temps réel existant ;
+- aucune fonction de surveillance (pas de localisation partagée) ; une rupture se gère simplement ;
+- forme envisagée : mode « Nous » dans la même app. À valider.
+
+## 12. Prochaines étapes
 
 1. Valider ce document (corrections, ajouts, retraits).
-2. Détailler le modèle de données et le contrat d'API (OpenAPI).
-3. Initialiser les 4 repos (structure, lint, CI, environnements Railway).
+2. Rédiger et valider le modèle de données, puis le contrat d'API (OpenAPI).
+3. Résultats de la recherche business (paiements, stores, concurrents), puis décision sur l'offre.
 4. Choisir la liste initiale de prompts et les libellés des champs de profil en français.
+5. Maquettes finales avec le style de la charte.

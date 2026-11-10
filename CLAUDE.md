@@ -11,6 +11,8 @@ Lire dans cet ordre, à chaque étape de travail :
 3. @docs/ECRANS.md — inventaire des écrans et parcours (si la tâche touche à l'interface).
 4. @docs/PERIMETRE.md — périmètre v1 et architecture.
 5. `design/tokens.json` — tokens de design (source unique, ne jamais copier de valeurs en dur).
+6. @docs/ADMIN-SCOPE.md — périmètre de l'admin, rôles, catalogue de configuration (la configuration concerne toutes les interfaces).
+7. @docs/BUSINESS.md — business model : principes, offres, droits, paiement.
 
 Si une demande contredit une décision de ces documents, le signaler avant d'agir. Si une décision change, mettre à jour le registre de `docs/GUIDELINES.md` (§3) et le journal (§9).
 
