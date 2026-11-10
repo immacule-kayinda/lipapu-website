@@ -1,6 +1,6 @@
 # Joga — Modèle de données (brouillon v0.1)
 
-> Statut : **brouillon à valider**. Dix décisions ont été prises le 2026-11-10 (§16). Migrations écrites et testées pour les étapes 1 (comptes, admin, configuration), 2 (profil, référentiels, photos) et 3 (vérification, modération) ; les suivantes attendent la validation.
+> Statut : **brouillon à valider**. Dix décisions ont été prises le 2026-11-10 (§16). Migrations écrites et testées pour les étapes 1 (comptes, admin, configuration), 2 (profil, référentiels, photos), 3 (vérification, modération) et 4 (découverte, likes, matchs) ; les suivantes attendent la validation.
 > Lire avec `PERIMETRE.md` (§7), `ADMIN-SCOPE.md` (rôles, configuration), `BUSINESS.md` (offres, droits, paiements) et `GUIDELINES.md` (règles non négociables).
 > Base : PostgreSQL 16 + PostGIS. Les noms de tables et de colonnes sont en anglais, comme le code.
 
@@ -225,8 +225,10 @@ Aucune pour l'étape 1. Les migrations de l'étape 1 (comptes, connexion, consen
 6. Business : produits, droits, abonnements, paiements.
 7. Couple (tables créées tôt, usage plus tard).
 
-Étapes 1 à 3 : faites (backend, `migrations/`). Notes de l'étape 2 : centres des communes à renseigner depuis l'admin avant le calcul de distance ; liste des 30 prompts à rédiger ; référentiels semés en français seulement (lingala et anglais à compléter).
+Étapes 1 à 4 : faites (backend, `migrations/`). Notes de l'étape 2 : centres des communes à renseigner depuis l'admin avant le calcul de distance ; liste des 30 prompts à rédiger ; référentiels semés en français seulement (lingala et anglais à compléter).
 
 Notes de l'étape 3 : bannir exige un second avis (contrainte en base) ; les sanctions sont en ajout seul et s'anonymisent à la suppression du compte ; le selfie ne peut pas dépasser 7 jours ni survivre à la décision (contraintes en base) ; quatre paramètres de modération ajoutés à la configuration.
+
+Notes de l'étape 4 : un like par paire et une ligne de match par paire (ordre a < b) imposés en base ; impressions partitionnées par mois ; `couples` reste prévue avec l'étape 7.
 
 Chaque étape donne une migration relue, avec son plan de retour arrière.
