@@ -30,4 +30,21 @@ Développer sur `claude/focused-goldberg-kr37qh`. Ne pas pousser ailleurs sans a
 
 ## Commandes
 
-À compléter à l'initialisation du projet.
+Node 22, npm.
+
+- `npm install` : installe les dépendances.
+- `npm run dev` : serveur de développement (http://localhost:3000), régénère les tokens.
+- `npm run tokens` : génère `src/styles/tokens.css` depuis `design/tokens.json` (`npm run tokens:check` pour vérifier sans écrire). Ne jamais éditer `tokens.css` à la main.
+- `npm run lint` : ESLint. `npm run typecheck` : TypeScript. `npm test` : Vitest.
+- `npm run format` : Prettier (`npm run format:check` pour vérifier).
+- `npm run build` puis `npm start` : build et serveur de production.
+
+Avant de conclure une tâche : `tokens:check`, `lint`, `typecheck`, `test`, `build` doivent passer (la CI les exécute).
+
+## Conventions de code
+
+- Messages dans `messages/fr.json` ; toute clé est ajoutée aussi à `ln.json` et `en.json` (test de parité).
+- Styles : CSS Modules et variables issues des tokens (`var(--color-*)`, `var(--space-*)`, classes `t-*` pour la typographie). Aucune couleur ni taille littérale.
+- Liens internes : `Link` de `@/i18n/navigation`. Le français n'a pas de préfixe d'URL.
+- Liste d'attente : jamais d'appel direct du navigateur vers le backend, uniquement `/api/waitlist`.
+- Pas de script tiers, pas de cookie.
