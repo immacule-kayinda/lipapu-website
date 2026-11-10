@@ -1,6 +1,6 @@
 # Joga — Modèle de données (brouillon v0.1)
 
-> Statut : **brouillon à valider**. Cinq décisions ont été prises le 2026-11-10 (§16). Aucune migration n'est écrite tant que ce document n'est pas validé.
+> Statut : **brouillon à valider**. Dix décisions ont été prises le 2026-11-10 (§16). Aucune migration n'est écrite tant que ce document n'est pas validé.
 > Lire avec `PERIMETRE.md` (§7), `ADMIN-SCOPE.md` (rôles, configuration), `BUSINESS.md` (offres, droits, paiements) et `GUIDELINES.md` (règles non négociables).
 > Base : PostgreSQL 16 + PostGIS. Les noms de tables et de colonnes sont en anglais, comme le code.
 
@@ -204,14 +204,16 @@ Suppression demandée : le compte passe à `deletion_pending` (délai de grâce 
 4. **« Nous sommes en couple » dès la v1** : décision d'un commun accord, les deux personnes confirment. Les deux profils sont alors mis en pause. Chacune peut mettre fin au couple seule.
 5. **Un seul like par personne.**
 
-### Questions encore ouvertes (avec ma proposition)
+5. **Messages après un « unmatch » ou une rupture** : supprimés pour les deux côtés après 30 jours, sauf si un signalement est en cours (`messages_retention_after_unmatch_days`).
+6. **Changement de numéro** : autonome, avec le nouveau numéro seul vérifié par code. Risque de prise de contrôle accepté ; atténuations : délai entre deux changements (`phone_change_cooldown_days`), notification des anciens appareils, journal `phone_change_events`.
+7. **Partitionnement dès le départ** pour toutes les tables à fort volume : `messages`, `impressions`, `audit_log`, `outbox_events` (fonction `ensure_monthly_partitions`, à planifier chaque mois).
+8. **Signalements clos et extraits** : conservés 12 mois (`reports_retention_months`), à valider avec un juriste.
+9. **Chiffrement du numéro** : au niveau de l'application, clé gérée hors de la base ; unicité par empreinte HMAC.
+10. **Appareils** : 3 actifs par compte, le plus ancien est déconnecté au-delà (`max_active_devices_per_account`).
 
-1. **Messages après un « unmatch » ou une rupture** : proposition, supprimés pour les deux côtés après 30 jours, sauf si un signalement est en cours.
-2. **Changement de numéro de téléphone** : proposition, nouvelle vérification par code sur l'ancien et le nouveau numéro, historique conservé.
-3. **Partitionnement dès le départ** : proposition, oui pour `messages` et `audit_log` (plus simple à faire tôt), plus tard pour le reste.
-4. **Durée de conservation des signalements clos et des extraits** : proposition, 12 mois, à valider avec un juriste.
-5. **Chiffrement du numéro** : proposition, au niveau de l'application, clé gérée hors de la base.
-6. **Appareils** : proposition, 3 appareils actifs par compte, le plus ancien est déconnecté au-delà.
+### Questions encore ouvertes
+
+Aucune pour l'étape 1. Les migrations de l'étape 1 (comptes, connexion, consentements, admin et rôles, configuration, journal d'audit, partitionnement de l'outbox) sont écrites et testées dans le repo `backend`.
 
 ## 17. Ordre de mise en œuvre proposé
 

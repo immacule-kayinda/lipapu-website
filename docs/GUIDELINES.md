@@ -56,6 +56,11 @@
 | Localisation | Commune seulement. Aucune position précise stockée ; distance entre communes |
 | Likes | Un seul like par personne |
 | Suppression de compte | Délai de grâce de 14 jours (réglable) |
+| Changement de numéro | Autonome, nouveau numéro seul vérifié ; délai de carence, notification et journal pour limiter la prise de contrôle |
+| Numéro de téléphone | Chiffré par l'application (clé hors base), unicité par empreinte HMAC |
+| Appareils | 3 appareils actifs par compte (réglable) |
+| Rétention | Messages supprimés 30 jours après unmatch ou rupture (sauf signalement) ; signalements clos 12 mois (à valider par un juriste) |
+| Partitionnement | Mensuel dès le départ : messages, impressions, audit_log, outbox_events |
 
 ## 4. Hors périmètre v1
 
@@ -105,7 +110,7 @@ Paiement et abonnement · messages vocaux · appels audio et vidéo · vérifica
 - Ville et communes de lancement : liste exacte.
 - Vérification : seuil à partir duquel passer d'une validation manuelle à AWS.
 - Cadre légal : conformité des données personnelles en RDC et dans les stores.
-- Modèle de données : brouillon dans `DATA-MODEL.md`, à valider. Cinq décisions prises, six questions encore ouvertes (avec une proposition chacune).
+- Modèle de données : brouillon dans `DATA-MODEL.md`, à valider. Dix décisions prises ; migrations de l'étape 1 écrites et testées.
 - Espace couple (plus tard) : liste des mini-jeux, forme (mode « Nous » dans la même app).
 
 ## 9. Journal des décisions
@@ -125,3 +130,4 @@ Paiement et abonnement · messages vocaux · appels audio et vidéo · vérifica
 | 2026-11-10 | Recherche business terminée (stores, mobile money, marché, concurrents, cadre légal, codes de connexion). Conclusions dans `BUSINESS.md` §9 : achats intégrés d'abord, mobile money en second canal à étudier, v1 gratuite |
 | 2026-11-10 | Brouillon du modèle de données (`DATA-MODEL.md`) |
 | 2026-11-10 | Décisions sur le modèle : date de naissance exacte à affichage limité ; suppression avec 14 jours de grâce ; commune seulement ; « Nous sommes en couple » dès la v1 d'un commun accord ; un seul like par personne |
+| 2026-11-10 | Réponses aux six questions du modèle de données ; migrations de l'étape 1 écrites et testées (backend) |
