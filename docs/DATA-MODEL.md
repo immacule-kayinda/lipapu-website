@@ -1,6 +1,6 @@
 # Joga — Modèle de données (brouillon v0.1)
 
-> Statut : **brouillon à valider**. Dix décisions ont été prises le 2026-11-10 (§16). Migrations écrites et testées pour les étapes 1 (comptes, admin, configuration), 2 (profil, référentiels, photos), 3 (vérification, modération), 4 (découverte, likes, matchs), 5 (chat, notifications) 6 (business) et 7 (couple, liste d'attente, contenu) : le schéma initial est complet.
+> Statut : **brouillon à valider**. Dix décisions ont été prises le 2026-11-10 (§16). Migrations écrites et testées pour les étapes 1 (comptes, admin, configuration), 2 (profil, référentiels, photos), 3 (vérification, modération), 4 (découverte, likes, matchs), 5 (chat, notifications), 6 (business) et 7 (couple, liste d'attente, contenu) : le schéma initial est complet.
 > Lire avec `PERIMETRE.md` (§7), `ADMIN-SCOPE.md` (rôles, configuration), `BUSINESS.md` (offres, droits, paiements) et `GUIDELINES.md` (règles non négociables).
 > Base : PostgreSQL 16 + PostGIS. Les noms de tables et de colonnes sont en anglais, comme le code.
 
