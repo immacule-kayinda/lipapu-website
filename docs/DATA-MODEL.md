@@ -1,6 +1,6 @@
 # Joga — Modèle de données (brouillon v0.1)
 
-> Statut : **brouillon à valider**. Dix décisions ont été prises le 2026-11-10 (§16). Migrations écrites et testées pour les étapes 1 (comptes, admin, configuration), 2 (profil, référentiels, photos), 3 (vérification, modération), 4 (découverte, likes, matchs) et 5 (chat, notifications) ; les suivantes attendent la validation.
+> Statut : **brouillon à valider**. Dix décisions ont été prises le 2026-11-10 (§16). Migrations écrites et testées pour les étapes 1 (comptes, admin, configuration), 2 (profil, référentiels, photos), 3 (vérification, modération), 4 (découverte, likes, matchs), 5 (chat, notifications) et 6 (business) ; les suivantes attendent la validation.
 > Lire avec `PERIMETRE.md` (§7), `ADMIN-SCOPE.md` (rôles, configuration), `BUSINESS.md` (offres, droits, paiements) et `GUIDELINES.md` (règles non négociables).
 > Base : PostgreSQL 16 + PostGIS. Les noms de tables et de colonnes sont en anglais, comme le code.
 
@@ -225,12 +225,14 @@ Aucune pour l'étape 1. Les migrations de l'étape 1 (comptes, connexion, consen
 6. Business : produits, droits, abonnements, paiements.
 7. Couple (tables créées tôt, usage plus tard).
 
-Étapes 1 à 5 : faites (backend, `migrations/`). Notes de l'étape 2 : centres des communes à renseigner depuis l'admin avant le calcul de distance ; liste des 30 prompts à rédiger ; référentiels semés en français seulement (lingala et anglais à compléter).
+Étapes 1 à 6 : faites (backend, `migrations/`). Notes de l'étape 2 : centres des communes à renseigner depuis l'admin avant le calcul de distance ; liste des 30 prompts à rédiger ; référentiels semés en français seulement (lingala et anglais à compléter).
 
 Notes de l'étape 3 : bannir exige un second avis (contrainte en base) ; les sanctions sont en ajout seul et s'anonymisent à la suppression du compte ; le selfie ne peut pas dépasser 7 jours ni survivre à la décision (contraintes en base) ; quatre paramètres de modération ajoutés à la configuration.
 
 Notes de l'étape 4 : un like par paire et une ligne de match par paire (ordre a < b) imposés en base ; impressions partitionnées par mois ; `couples` reste prévue avec l'étape 7.
 
 Notes de l'étape 5 : l'unicité (expéditeur, client_message_id) ne peut pas vivre sur la table partitionnée `messages` ; elle est portée par la table `message_client_ids`, écrite dans la même transaction. Seul un participant peut écrire (contrainte en base). Les gabarits de messages ne sont pas semés : textes à rédiger.
+
+Notes de l'étape 6 : Joga+ est préparé mais inactif, sans prix ni devise (décisions business ouvertes) et le drapeau `feature_joga_plus_enabled` est coupé ; aucun droit ne peut porter sur la sécurité (vérification, signalement, blocage, suppression, export : contrainte en base) ; paiements et abonnements s'anonymisent à la suppression du compte ; un remboursement validé exige un second avis.
 
 Chaque étape donne une migration relue, avec son plan de retour arrière.
