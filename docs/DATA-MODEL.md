@@ -1,6 +1,6 @@
 # Joga — Modèle de données (brouillon v0.1)
 
-> Statut : **brouillon à valider**. Dix décisions ont été prises le 2026-11-10 (§16). Aucune migration n'est écrite tant que ce document n'est pas validé.
+> Statut : **brouillon à valider**. Dix décisions ont été prises le 2026-11-10 (§16). Migrations écrites et testées pour les étapes 1 (comptes, admin, configuration) et 2 (profil, référentiels, photos) ; les suivantes attendent la validation.
 > Lire avec `PERIMETRE.md` (§7), `ADMIN-SCOPE.md` (rôles, configuration), `BUSINESS.md` (offres, droits, paiements) et `GUIDELINES.md` (règles non négociables).
 > Base : PostgreSQL 16 + PostGIS. Les noms de tables et de colonnes sont en anglais, comme le code.
 
@@ -224,5 +224,7 @@ Aucune pour l'étape 1. Les migrations de l'étape 1 (comptes, connexion, consen
 5. Chat, notifications.
 6. Business : produits, droits, abonnements, paiements.
 7. Couple (tables créées tôt, usage plus tard).
+
+Étapes 1 et 2 : faites (backend, `migrations/`). Notes de l'étape 2 : centres des communes à renseigner depuis l'admin avant le calcul de distance ; liste des 30 prompts à rédiger ; référentiels semés en français seulement (lingala et anglais à compléter).
 
 Chaque étape donne une migration relue, avec son plan de retour arrière.
