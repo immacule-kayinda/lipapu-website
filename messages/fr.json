@@ -1,0 +1,313 @@
+{
+  "common": {
+    "siteName": "Joga",
+    "skipToContent": "Aller au contenu",
+    "provisionalNotice": "Contenu provisoire, en cours de rédaction.",
+    "legalProvisionalNotice": "Texte provisoire, à faire valider par un juriste avant toute publication.",
+    "contactPlaceholder": "[adresse de contact à définir]",
+    "backHome": "Retour à l'accueil"
+  },
+  "meta": {
+    "titleTemplate": "%s | Joga",
+    "defaultTitle": "Joga, des rencontres qui comptent",
+    "defaultDescription": "Joga est une application de rencontres pour les relations sérieuses, lancée d'abord à Kinshasa. Sobre, respectueuse, pensée pour vous."
+  },
+  "nav": {
+    "main": "Navigation principale",
+    "home": "Accueil de Joga",
+    "safety": "Sécurité",
+    "blog": "Blog",
+    "about": "À propos"
+  },
+  "theme": {
+    "label": "Apparence",
+    "system": "Automatique",
+    "light": "Clair",
+    "dark": "Sombre"
+  },
+  "footer": {
+    "navLabel": "Pied de page",
+    "tagline": "Des rencontres qui comptent.",
+    "legalHeading": "Informations légales",
+    "cgu": "Conditions d'utilisation",
+    "privacy": "Confidentialité",
+    "cookies": "Cookies",
+    "deleteAccount": "Supprimer mon compte",
+    "copyright": "© {year} Joga. Tous droits réservés."
+  },
+  "store": {
+    "ios": "App Store",
+    "android": "Google Play",
+    "soon": "Bientôt",
+    "label": "{store} : bientôt disponible",
+    "listLabel": "Télécharger l'application",
+    "availableOn": "Disponible sur"
+  },
+  "home": {
+    "meta": {
+      "title": "Des rencontres qui comptent",
+      "description": "Joga est une application de rencontres pour les relations sérieuses, lancée d'abord à Kinshasa. Inscrivez-vous à la liste d'attente."
+    },
+    "hero": {
+      "overline": "Relations sérieuses, Kinshasa",
+      "title": "Des rencontres qui comptent.",
+      "lead": "Joga est une application de rencontres pensée pour celles et ceux qui cherchent une vraie relation. Peu de profils par jour, des réponses écrites, un rythme posé."
+    },
+    "how": {
+      "title": "Comment ça marche",
+      "steps": {
+        "profile": {
+          "title": "Créez votre profil",
+          "body": "Quelques photos et trois réponses écrites pour vous présenter. Pas de pression, vous choisissez ce que vous montrez."
+        },
+        "discover": {
+          "title": "Découvrez chaque jour",
+          "body": "Un petit nombre de profils par jour, choisis pour leur compatibilité. Vous réagissez à une photo ou à une réponse précise."
+        },
+        "talk": {
+          "title": "Discutez après un match",
+          "body": "La conversation s'ouvre quand l'intérêt est réciproque. Vous prenez le temps de vous connaître."
+        }
+      }
+    },
+    "safety": {
+      "title": "Votre sécurité d'abord",
+      "lead": "Signaler, bloquer, supprimer son compte : ce sont des fonctions de base, pas des options.",
+      "items": {
+        "verified": "Vérification facultative des profils par selfie, relue par une personne.",
+        "moderation": "Photos contrôlées avant d'être visibles.",
+        "report": "Signalement et blocage en deux gestes, à tout moment."
+      },
+      "cta": "Tout savoir sur la sécurité"
+    }
+  },
+  "waitlist": {
+    "title": "Rejoignez la liste d'attente",
+    "lead": "Laissez votre numéro de téléphone ou votre adresse e-mail. Nous vous écrirons une seule fois, au lancement.",
+    "contactLabel": "Téléphone ou e-mail",
+    "contactHint": "Exemple : 0812345678 ou nom@exemple.com",
+    "consent": "J'accepte que Joga utilise ces informations pour me prévenir du lancement de l'application.",
+    "privacyLinkPrefix": "Voir la",
+    "privacyLink": "politique de confidentialité",
+    "honeypotLabel": "Ne pas remplir ce champ",
+    "submit": "Me prévenir au lancement",
+    "sending": "Envoi en cours",
+    "success": "Merci, vous êtes sur la liste. Nous vous écrirons au lancement.",
+    "errors": {
+      "summary": "Le formulaire contient des erreurs.",
+      "contactRequired": "Indiquez un numéro de téléphone ou une adresse e-mail.",
+      "contactInvalid": "Ce numéro ou cette adresse e-mail ne semble pas valide.",
+      "consentRequired": "Cochez la case pour accepter.",
+      "unavailable": "L'inscription est momentanément indisponible. Réessayez plus tard.",
+      "network": "Connexion impossible. Vérifiez votre réseau et réessayez.",
+      "generic": "Une erreur est survenue. Réessayez dans un instant."
+    }
+  },
+  "safety": {
+    "meta": {
+      "title": "Sécurité et confiance",
+      "description": "Vérification des profils, modération, signalement et conseils pour vous protéger des arnaques."
+    },
+    "title": "Sécurité et confiance",
+    "lead": "Rencontrer quelqu'un doit se faire sans crainte. Voici ce que Joga met en place, et ce que vous pouvez faire de votre côté.",
+    "sections": {
+      "verification": {
+        "title": "Vérification des profils",
+        "body": "Vous pouvez faire vérifier votre profil par un selfie avec un geste demandé au hasard. Une personne compare le selfie à vos photos. Le selfie est supprimé après la décision. Les détails de ce fonctionnement seront précisés avant le lancement."
+      },
+      "moderation": {
+        "title": "Modération",
+        "body": "Les photos sont contrôlées avant d'apparaître sur un profil. Chaque action de modération est tracée. Les règles précises seront publiées avant le lancement."
+      },
+      "report": {
+        "title": "Signaler et bloquer",
+        "body": "Depuis n'importe quel profil ou conversation, vous pouvez signaler un comportement ou bloquer une personne. La personne bloquée ne le saura pas."
+      },
+      "scams": {
+        "title": "Conseils contre les arnaques",
+        "body": "Méfiez-vous de toute personne qui demande de l'argent, refuse de se montrer ou vous pousse à quitter l'application très vite."
+      }
+    },
+    "tips": {
+      "title": "Quelques réflexes",
+      "items": {
+        "money": "N'envoyez jamais d'argent à une personne que vous n'avez pas rencontrée.",
+        "meet": "Pour une première rencontre, choisissez un lieu public et prévenez un proche.",
+        "share": "Gardez pour vous vos informations sensibles : adresse, documents, codes reçus par SMS.",
+        "trust": "Si quelque chose vous met mal à l'aise, signalez-le. Vous n'avez pas à vous justifier."
+      }
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog",
+      "description": "Conseils de rencontre, conseils de sécurité et actualité de Joga."
+    },
+    "title": "Blog",
+    "lead": "Conseils, sécurité et actualité de Joga.",
+    "empty": {
+      "title": "Aucun article pour le moment",
+      "body": "Les premiers articles arriveront bientôt. Revenez nous voir, ou inscrivez-vous à la liste d'attente."
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "À propos",
+      "description": "Qui est derrière Joga, notre manière de travailler et comment nous contacter."
+    },
+    "title": "À propos",
+    "lead": "Joga est une application de rencontres pour les relations sérieuses, lancée d'abord à Kinshasa.",
+    "sections": {
+      "mission": {
+        "title": "Notre idée",
+        "body": "Offrir un endroit sobre et respectueux pour se rencontrer, sans jeu ni pression. Texte provisoire."
+      },
+      "team": {
+        "title": "L'équipe",
+        "body": "Présentation de l'équipe à venir."
+      },
+      "moderation": {
+        "title": "Modération",
+        "body": "Une équipe de modération relit les signalements et les vérifications. Détails à venir."
+      },
+      "contact": {
+        "title": "Nous contacter",
+        "body": "Pour toute question, écrivez-nous à l'adresse suivante : {contact}."
+      }
+    }
+  },
+  "legal": {
+    "contactLine": "Contact : {contact}",
+    "cgu": {
+      "meta": {
+        "title": "Conditions générales d'utilisation",
+        "description": "Conditions d'utilisation de l'application Joga (texte provisoire)."
+      },
+      "title": "Conditions générales d'utilisation",
+      "sections": {
+        "purpose": {
+          "title": "Objet",
+          "body": "Les présentes conditions encadrent l'utilisation de l'application Joga, une application de rencontres pour les relations sérieuses."
+        },
+        "access": {
+          "title": "Accès au service",
+          "body": "Le service est réservé aux personnes majeures. Un compte correspond à un numéro de téléphone."
+        },
+        "conduct": {
+          "title": "Comportement attendu",
+          "body": "Vous vous engagez à rester respectueux, à ne publier que des informations vraies et à ne pas demander d'argent aux autres membres."
+        },
+        "content": {
+          "title": "Contenus publiés",
+          "body": "Vous restez propriétaire de vos contenus. Vous nous autorisez à les afficher dans le cadre du service. Les contenus contraires aux règles peuvent être retirés."
+        },
+        "sanctions": {
+          "title": "Signalement et sanctions",
+          "body": "Tout membre peut être signalé. En cas de manquement, le compte peut être suspendu ou supprimé."
+        },
+        "liability": {
+          "title": "Responsabilité",
+          "body": "Joga met tout en oeuvre pour offrir un service sûr mais ne peut garantir l'identité ni les intentions des membres. Clause à faire rédiger."
+        },
+        "changes": {
+          "title": "Évolution des conditions",
+          "body": "Ces conditions peuvent évoluer. Les changements importants vous seront signalés."
+        }
+      }
+    },
+    "privacy": {
+      "meta": {
+        "title": "Politique de confidentialité",
+        "description": "Comment Joga traite vos données personnelles (texte provisoire)."
+      },
+      "title": "Politique de confidentialité",
+      "sections": {
+        "controller": {
+          "title": "Responsable du traitement",
+          "body": "Identité de l'entité responsable à renseigner."
+        },
+        "data": {
+          "title": "Données concernées",
+          "body": "Sur ce site : si vous rejoignez la liste d'attente, votre numéro de téléphone ou votre adresse e-mail. Dans l'application : les informations de profil, les photos et, si vous le souhaitez, un selfie de vérification."
+        },
+        "purposes": {
+          "title": "Finalités",
+          "body": "Vous prévenir du lancement, faire fonctionner l'application, la sécuriser et modérer les contenus."
+        },
+        "sensitive": {
+          "title": "Données sensibles",
+          "body": "Les photos, les selfies et la religion ne sont traités qu'avec votre consentement explicite. Les selfies sont supprimés après la vérification."
+        },
+        "retention": {
+          "title": "Durée de conservation",
+          "body": "Les données de la liste d'attente sont conservées jusqu'au lancement puis supprimées. Durées précises à définir."
+        },
+        "rights": {
+          "title": "Vos droits",
+          "body": "Vous pouvez demander l'accès, la correction ou la suppression de vos données. Voir la page de suppression de compte."
+        },
+        "sharing": {
+          "title": "Destinataires et hébergement",
+          "body": "Liste des prestataires et lieux d'hébergement à renseigner."
+        }
+      }
+    },
+    "cookies": {
+      "meta": {
+        "title": "Politique de cookies",
+        "description": "Ce site n'utilise aucun cookie (texte provisoire)."
+      },
+      "title": "Politique de cookies",
+      "sections": {
+        "none": {
+          "title": "Aucun cookie",
+          "body": "Ce site ne dépose aucun cookie et ne charge aucun traceur ou script tiers. Aucun bandeau de consentement n'est donc nécessaire."
+        },
+        "storage": {
+          "title": "Stockage local",
+          "body": "Si vous choisissez un thème clair ou sombre, ce choix est gardé dans votre navigateur, sur votre appareil uniquement. Il n'est jamais envoyé à Joga."
+        },
+        "changes": {
+          "title": "Évolution",
+          "body": "Si une mesure d'audience respectueuse de la vie privée est ajoutée, cette page sera mise à jour."
+        }
+      }
+    }
+  },
+  "deleteAccount": {
+    "meta": {
+      "title": "Supprimer mon compte et mes données",
+      "description": "Comment supprimer votre compte Joga et vos données personnelles (marche à suivre provisoire)."
+    },
+    "title": "Supprimer mon compte et mes données",
+    "lead": "Vous pouvez supprimer votre compte et vos données à tout moment.",
+    "stepsTitle": "Marche à suivre",
+    "steps": {
+      "app": {
+        "title": "Depuis l'application",
+        "body": "Ouvrez Joga, allez dans les réglages, puis choisissez « Supprimer mon compte » et confirmez. Chemin exact à confirmer au lancement."
+      },
+      "contact": {
+        "title": "Sans accès à l'application",
+        "body": "Écrivez-nous à {contact} depuis l'adresse ou avec le numéro associé à votre compte, en indiquant « Suppression de compte »."
+      }
+    },
+    "whatTitle": "Ce qui est supprimé",
+    "what": "Votre profil, vos photos, vos conversations et vos préférences sont supprimés. Certaines données peuvent être conservées si la loi l'exige. Délais et détails à définir.",
+    "waitlist": "Pour être retiré de la liste d'attente, écrivez-nous à la même adresse en indiquant le numéro ou l'e-mail utilisé."
+  },
+  "notFound": {
+    "meta": {
+      "title": "Page introuvable"
+    },
+    "overline": "Erreur 404",
+    "title": "Cette page est introuvable.",
+    "body": "Le lien est peut-être erroné ou la page a été déplacée. Reprenons depuis l'accueil."
+  },
+  "error": {
+    "overline": "Erreur",
+    "title": "Quelque chose s'est mal passé.",
+    "body": "Ce n'est pas de votre faute. Réessayez dans un instant, ou revenez à l'accueil.",
+    "retry": "Réessayer"
+  }
+}

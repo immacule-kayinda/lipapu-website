@@ -1,0 +1,13 @@
+.sections {
+  display: grid;
+  gap: var(--space-7);
+  max-width: var(--site-measure);
+}
+
+.section h2 {
+  margin-bottom: var(--space-2);
+}
+
+.section p {
+  margin-bottom: 0;
+}
