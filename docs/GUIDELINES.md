@@ -51,6 +51,11 @@
 | Configuration | Tout réglage de l'app est un paramètre défini une fois, versionné, avec portée, bornes et audit ; l'admin génère ses formulaires depuis ces définitions. Les garde-fous de sécurité restent dans le code |
 | Textes de l'interface | Embarqués dans l'app, pas de textes distants. Les corrections de traduction (lingala) passent par une mise à jour de l'app, y compris à distance via EAS Update |
 | Espace couple | Idée pour plus tard : quelques mini-jeux simples à jouer à distance à deux. Non construit en v1, mais à préparer (relation de couple dans le modèle de données, temps réel disponible) |
+| « Nous sommes en couple » | Dans la v1 : proposition puis confirmation par les deux personnes, d'un commun accord. Les deux profils sont alors mis en pause. Chacune peut mettre fin au couple seule |
+| Âge et date de naissance | Date exacte stockée. Affichage au choix : âge seul, ou âge avec jour et mois d'anniversaire |
+| Localisation | Commune seulement. Aucune position précise stockée ; distance entre communes |
+| Likes | Un seul like par personne |
+| Suppression de compte | Délai de grâce de 14 jours (réglable) |
 
 ## 4. Hors périmètre v1
 
@@ -100,8 +105,8 @@ Paiement et abonnement · messages vocaux · appels audio et vidéo · vérifica
 - Ville et communes de lancement : liste exacte.
 - Vérification : seuil à partir duquel passer d'une validation manuelle à AWS.
 - Cadre légal : conformité des données personnelles en RDC et dans les stores.
-- Modèle de données : brouillon dans `DATA-MODEL.md`, à valider (inclut rôles, configuration, droits, paiements, relation de couple).
-- Espace couple : liste des mini-jeux, forme (mode « Nous » dans la même app), « Nous sommes en couple » dès la v1 ou non.
+- Modèle de données : brouillon dans `DATA-MODEL.md`, à valider. Cinq décisions prises, six questions encore ouvertes (avec une proposition chacune).
+- Espace couple (plus tard) : liste des mini-jeux, forme (mode « Nous » dans la même app).
 
 ## 9. Journal des décisions
 
@@ -119,3 +124,4 @@ Paiement et abonnement · messages vocaux · appels audio et vidéo · vérifica
 | 2026-11-10 | Espace couple : idée de mini-jeux simples à distance, à préparer sans le construire en v1 |
 | 2026-11-10 | Recherche business terminée (stores, mobile money, marché, concurrents, cadre légal, codes de connexion). Conclusions dans `BUSINESS.md` §9 : achats intégrés d'abord, mobile money en second canal à étudier, v1 gratuite |
 | 2026-11-10 | Brouillon du modèle de données (`DATA-MODEL.md`) |
+| 2026-11-10 | Décisions sur le modèle : date de naissance exacte à affichage limité ; suppression avec 14 jours de grâce ; commune seulement ; « Nous sommes en couple » dès la v1 d'un commun accord ; un seul like par personne |

@@ -50,6 +50,7 @@ Contrat entre repos : le backend publie une spécification **OpenAPI** ; les cli
 - Quota de likes quotidien, **configurable** (permet un futur abonnement).
 - Écran « Likes reçus ».
 - Match mutuel → conversation.
+- « Nous sommes en couple » : proposition puis confirmation par les deux personnes ; les deux profils sont alors mis en pause.
 
 **Chat**
 - Texte en temps réel (WebSocket), historique persistant.
@@ -198,7 +199,7 @@ Détail et questions ouvertes : voir `DATA-MODEL.md`. Entités principales :
 - Admin : `admin_users`, `roles`, `permissions`, `admin_sessions`, `audit_log`
 - Configuration : `config_definitions`, `config_versions`, `config_overrides` (portée : ville, plateforme, segment)
 - Business : `products`, `prices`, `entitlements`, `subscriptions`, `payments`, `refunds`
-- Plus tard (couple) : `couples` (état : aucune, active, terminée ; date du match), `couple_games`
+- Couple : `couples` (dès la v1 : demande, confirmation par les deux, fin) ; plus tard : `couple_games`
 
 Règles de conception : `gender` et `looking_for` séparés (extensible), toutes les chaînes d'interface traduites via clés i18n, quotas configurables.
 
@@ -238,7 +239,7 @@ Règles de conception : `gender` et `looking_for` séparés (extensible), toutes
 ## 11. Espace couple (idée pour plus tard)
 
 Quand deux personnes deviennent un couple, elles peuvent jouer ensemble, à distance, à quelques mini-jeux simples. Hors v1, mais à préparer :
-- une relation de couple dans le modèle de données (état, date du match) ;
+- la relation de couple (état, date du match), déjà utilisée en v1 pour « Nous sommes en couple » ;
 - des jeux au tour par tour (asynchrones), adaptés aux réseaux lents, qui s'appuient sur le temps réel existant ;
 - aucune fonction de surveillance (pas de localisation partagée) ; une rupture se gère simplement ;
 - forme envisagée : mode « Nous » dans la même app. À valider.

@@ -12,6 +12,7 @@
 4. **Conversation** : MAT-01 → MSG-02 ; MSG-01 → MSG-02 → MSG-03 → SAF-01 ou SAF-02
 5. **Profil et réglages** : PRO-01 → PRO-02, PRO-03, SET-01 → SET-02 à SET-06
 6. **Sécurité et états** : SAF-01 à SAF-03 ; SYS-01 à SYS-04
+7. **Couple** : MSG-02 ou profil du match → CPL-01 → (l'autre personne) CPL-02 → CPL-03 ; plus tard CPL-04
 
 ## Onboarding
 
@@ -80,6 +81,15 @@
 | SYS-02 | Compte suspendu | Motif, durée, faire appel | — |
 | SYS-03 | Mise à jour requise | Lien vers le store | — |
 | SYS-04 | Hors-ligne et erreur | Bandeau hors-ligne, erreur serveur, réessayer | — |
+
+## Couple
+
+| ID | Écran | Contenu et règles | Wireframe |
+|---|---|---|---|
+| CPL-01 | Nous sommes en couple | Depuis le chat ou le profil d'un match : proposer d'être en couple. Explique que les deux profils seront mis en pause | — |
+| CPL-02 | Demande reçue | L'autre personne accepte ou refuse. Rien ne change tant que les deux n'ont pas confirmé | — |
+| CPL-03 | Couple confirmé | Les deux profils sont en pause ; message sobre ; la conversation continue | — |
+| CPL-04 | Fin du couple | Chacune des deux personnes peut y mettre fin seule ; le profil redevient visible ; texte sans jugement | — |
 
 ## Composition des feuilles de wireframes
 

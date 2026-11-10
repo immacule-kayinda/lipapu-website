@@ -1,6 +1,6 @@
 # Joga — Modèle de données (brouillon v0.1)
 
-> Statut : **brouillon à valider**. Aucune migration n'est écrite tant que ce document n'est pas validé.
+> Statut : **brouillon à valider**. Cinq décisions ont été prises le 2026-11-10 (§16). Aucune migration n'est écrite tant que ce document n'est pas validé.
 > Lire avec `PERIMETRE.md` (§7), `ADMIN-SCOPE.md` (rôles, configuration), `BUSINESS.md` (offres, droits, paiements) et `GUIDELINES.md` (règles non négociables).
 > Base : PostgreSQL 16 + PostGIS. Les noms de tables et de colonnes sont en anglais, comme le code.
 
@@ -52,19 +52,19 @@ erDiagram
 | `refresh_tokens` | `id`, `user_id`, `device_id`, `token_hash`, `rotated_from`, `expires_at`, `revoked_at` | rotation à chaque usage ; unique `token_hash` |
 | `consents` | `id`, `user_id`, `type` (`terms`, `privacy`, `religion`, `verification`, `billing`), `version`, `granted_at`, `revoked_at` | preuve de consentement exigée par le Code du numérique |
 
-Note : la date de naissance est stockée en entier (voir question ouverte 1).
+Note : la **date de naissance exacte** est stockée (donnée sensible). Ce qui s'affiche est limité par le choix de la personne (`profiles.birthday_display`).
 
 ## 4. Domaine B : profil
 
 | Table | Colonnes clés | Contraintes et index |
 |---|---|---|
-| `profiles` | `user_id` (clé), `first_name`, `gender`, `looking_for`, `commune_id`, `location` (point PostGIS arrondi), `height_cm`, `job`, `education_code`, `children_status_code`, `children_wish_code`, `dating_intention_code`, `relationship_type_code`, `religion_code`, `drinking_code`, `smoking_code`, `cannabis_code`, `drugs_code`, `hometown`, `field_visibility` (`jsonb` : champ → affiché ou masqué), `completeness`, `status` (`draft`, `pending_review`, `visible`, `hidden`), `verified_at` | index de découverte (`status`, `gender`, `looking_for`, `commune_id`) ; index géographique sur `location` ; codes = clés vers `ref_values` |
+| `profiles` | `user_id` (clé), `first_name`, `gender`, `looking_for`, `commune_id`, `birthday_display` (`age_only` ou `day_month` : âge seul, ou âge avec jour et mois d'anniversaire), `height_cm`, `job`, `education_code`, `children_status_code`, `children_wish_code`, `dating_intention_code`, `relationship_type_code`, `religion_code`, `drinking_code`, `smoking_code`, `cannabis_code`, `drugs_code`, `hometown`, `field_visibility` (`jsonb` : champ → affiché ou masqué), `completeness`, `status` (`draft`, `pending_review`, `visible`, `hidden`), `verified_at` | index de découverte (`status`, `gender`, `looking_for`, `commune_id`) ; **aucune position précise n'est stockée** : seule la commune ; codes = clés vers `ref_values` |
 | `profile_languages` | `user_id`, `language_code` | clé (`user_id`, `language_code`) |
 | `photos` | `id`, `user_id`, `position` (1 à 6), `storage_key`, `width`, `height`, `blurhash`, `status` (`uploaded`, `processing`, `approved`, `rejected`, `removed`), `moderation_scores` (`jsonb`), `rejection_reason_code`, `perceptual_hash`, `created_at` | unique (`user_id`, `position`) pour les photos actives ; index `perceptual_hash` (doublons) |
 | `prompt_answers` | `id`, `user_id`, `prompt_id`, `position` (1 à 3), `answer_text` (225 caractères max), `status` | unique (`user_id`, `position`) ; contrainte de longueur |
 | `preferences` | `user_id`, `age_min`, `age_max`, `max_distance_km`, `commune_ids`, `advanced_filters` (`jsonb`) | bornes validées par la configuration |
 
-Règles : un profil n'est `visible` que si les photos minimales sont `approved` et que les règles de la configuration sont respectées. Le statut `paused` de `users` sert aussi à « Nous sommes en couple » (voir question 8).
+Règles : un profil n'est `visible` que si les photos minimales sont `approved` et que les règles de la configuration sont respectées. Quand un couple est actif (§13), les deux profils sont retirés de la découverte (mis en pause) et reviennent si le couple prend fin.
 
 ## 5. Domaine C : référentiels et géographie
 
@@ -73,7 +73,7 @@ Règles : un profil n'est `visible` que si les photos minimales sont `approved` 
 | `ref_values` | `id`, `kind` (`religion`, `education`, `language`, `intention`, `children_status`, `children_wish`, `relationship_type`, `drinking`, `smoking`, `cannabis`, `drugs`, `report_reason`, `photo_rejection_reason`, `selfie_gesture`, …), `code`, `labels` (`jsonb` par langue), `position`, `active` | unique (`kind`, `code`) ; géré depuis l'admin, avec versions de configuration |
 | `ref_prompts` | `id`, `code`, `texts` (`jsonb` par langue), `position`, `active` | au moins 30 au lancement |
 | `cities` | `id`, `code`, `name`, `status` (`closed`, `waitlist`, `open`), `centroid` | ouverture par ville depuis l'admin |
-| `communes` | `id`, `city_id`, `name`, `centroid`, `boundary` (polygone, optionnel) | index géographique ; Kinshasa : ses communes |
+| `communes` | `id`, `city_id`, `name`, `centroid`, `boundary` (polygone, optionnel) | la distance se calcule entre les centres des communes ; Kinshasa : ses communes |
 
 ## 6. Domaine D : découverte, likes, matchs
 
@@ -82,7 +82,7 @@ Règles : un profil n'est `visible` que si les photos minimales sont `approved` 
 | `daily_batches` | `id`, `user_id`, `batch_date`, `config_version_id`, `algorithm_version`, `generated_at` | unique (`user_id`, `batch_date`) ; garde la version de configuration utilisée |
 | `daily_batch_items` | `batch_id`, `candidate_user_id`, `position`, `score`, `reasons` (`jsonb`), `is_daily_pick` | clé (`batch_id`, `position`) |
 | `impressions` | `id`, `viewer_id`, `target_id`, `batch_id`, `shown_at` | partitionnée par mois ; sert à l'apprentissage futur |
-| `likes` | `id`, `from_user_id`, `to_user_id`, `target_type` (`photo`, `prompt_answer`, `profile`), `target_id`, `comment` (500 caractères max), `status` (`pending`, `matched`, `declined`), `idempotency_key`, `created_at` | unique (`from_user_id`, `to_user_id`) ; unique `idempotency_key` ; index (`to_user_id`, `status`) pour « Likes reçus » |
+| `likes` | `id`, `from_user_id`, `to_user_id`, `target_type` (`photo`, `prompt_answer`, `profile`), `target_id`, `comment` (500 caractères max), `status` (`pending`, `matched`, `declined`), `idempotency_key`, `created_at` | **un seul like par personne** : unique (`from_user_id`, `to_user_id`) ; unique `idempotency_key` ; index (`to_user_id`, `status`) pour « Likes reçus » |
 | `passes` | `from_user_id`, `to_user_id`, `created_at` | clé (`from_user_id`, `to_user_id`) |
 | `matches` | `id`, `user_a_id`, `user_b_id` (ordre fixe : a < b), `source_like_id`, `status` (`active`, `unmatched`), `unmatched_by`, `created_at`, `unmatched_at` | unique (`user_a_id`, `user_b_id`) |
 | `blocks` | `blocker_id`, `blocked_id`, `reason_code`, `created_at` | clé (`blocker_id`, `blocked_id`) ; exclu des lots dans les deux sens |
@@ -158,20 +158,20 @@ Les garde-fous de sécurité (âge minimum 18 ans, suppression des selfies) ne s
 | `refunds` | `id`, `payment_id`, `amount_minor`, `reason`, `status`, `requested_by`, `approval_id`, `created_at` | second avis exigé |
 | `payment_webhook_events` | `id`, `provider`, `event_id`, `payload`, `received_at`, `processed_at` | unique (`provider`, `event_id`) : un webhook traité deux fois ne change rien |
 
-## 13. Domaines K à M : liste d'attente, contenu, couple (plus tard)
+## 13. Domaines K à M : liste d'attente, contenu, couple
 
 | Table | Colonnes clés | Notes |
 |---|---|---|
 | `waitlist_entries` | `id`, `contact_encrypted`, `contact_hash`, `contact_type` (`phone`, `email`), `city_id`, `consent_at`, `source`, `notified_at`, `unsubscribed_at` | unique `contact_hash` ; alimentée par le site via l'API |
 | `content_items` | `id`, `type` (`blog`, `safety_tip`, `announcement`), `slug`, `title` et `body` (`jsonb` par langue), `status`, `published_at`, `author_admin_id` | gérés depuis l'admin |
-| `couples` | `id`, `user_a_id`, `user_b_id`, `match_id`, `status` (`pending`, `active`, `ended`), `confirmed_a_at`, `confirmed_b_at`, `started_at`, `ended_at`, `ended_by` | **créée mais non utilisée en v1** ; confirmation des deux personnes |
+| `couples` | `id`, `user_a_id`, `user_b_id`, `match_id`, `status` (`pending`, `active`, `ended`), `confirmed_a_at`, `confirmed_b_at`, `started_at`, `ended_at`, `ended_by` | **utilisée dès la v1** pour « Nous sommes en couple » : les deux personnes confirment d'un commun accord (`pending` puis `active`), les profils sont alors mis en pause ; chacune peut y mettre fin seule |
 | `couple_games` | `id`, `couple_id`, `game_code`, `state` (`jsonb`), `turn_user_id`, `updated_at` | **plus tard** ; jeux au tour par tour |
 
 Technique : `outbox_events` existe déjà (migration initiale) ; une table `idempotency_keys` pourra servir aux opérations non couvertes ci-dessus.
 
 ## 14. Rétention et suppression de compte
 
-Suppression demandée : le compte passe à `deletion_pending` (délai de grâce réglable par la configuration), puis une tâche exécute la suppression.
+Suppression demandée : le compte passe à `deletion_pending` (délai de grâce de **14 jours** par défaut, réglable par la configuration : `account_deletion_grace_days`), puis une tâche exécute la suppression.
 
 | Donnée | Règle |
 |---|---|
@@ -188,25 +188,30 @@ Suppression demandée : le compte passe à `deletion_pending` (délai de grâce 
 
 ## 15. Index et performances (à retenir)
 
-- Découverte : index composite sur les profils visibles (`gender`, `looking_for`, `commune_id`) et index géographique ; le lot du jour est précalculé de nuit.
+- Découverte : index composite sur les profils visibles (`gender`, `looking_for`, `commune_id`) ; la distance se calcule entre communes ; le lot du jour est précalculé de nuit.
 - « Likes reçus » : index (`to_user_id`, `status`).
 - Chat : lecture par (`conversation_id`, `id`) décroissant, partition mensuelle.
 - Limitation de débit des codes : index sur `otp_challenges`.
 - Partitions mensuelles créées par une tâche planifiée.
 
-## 16. Questions ouvertes à valider
+## 16. Décisions et questions ouvertes
 
-1. **Date de naissance** : stocker la date exacte (calcul de l'âge juste, plus sensible) ou seulement l'année et le mois ?
-2. **Durée de conservation des messages** après un « unmatch » ou une rupture ?
-3. **Délai de grâce** avant suppression définitive : valeur initiale (par exemple 14 ou 30 jours) ?
-4. **Précision de la localisation** : commune seulement, ou point arrondi pour la distance ?
-5. **Changement de numéro de téléphone** : procédure et conséquences sur l'identité.
-6. **Partitionnement dès le départ**, ou seulement quand le volume le demande ?
-7. **Nombre de likes par personne** : un seul like par personne (choix actuel, comme Hinge) ou plusieurs éléments ?
-8. **« Nous sommes en couple »** dans la v1 : statut `paused` des deux profils, ou attente de l'espace couple ?
-9. **Durée de conservation** des signalements clos et des extraits de messages.
-10. **Chiffrement** du numéro : au niveau de l'application avec une clé gérée hors de la base (recommandé).
-11. **Un compte, plusieurs appareils** : combien d'appareils actifs et que faire en cas de dépassement ?
+### Décisions prises (2026-11-10)
+
+1. **Date de naissance** : la date exacte est stockée. L'affichage est au choix de la personne : âge seul, ou âge avec jour et mois d'anniversaire.
+2. **Délai de grâce avant suppression définitive** : 14 jours (valeur par défaut, réglable).
+3. **Localisation** : commune seulement. Aucune position précise n'est stockée ; la distance se calcule entre communes.
+4. **« Nous sommes en couple » dès la v1** : décision d'un commun accord, les deux personnes confirment. Les deux profils sont alors mis en pause. Chacune peut mettre fin au couple seule.
+5. **Un seul like par personne.**
+
+### Questions encore ouvertes (avec ma proposition)
+
+1. **Messages après un « unmatch » ou une rupture** : proposition, supprimés pour les deux côtés après 30 jours, sauf si un signalement est en cours.
+2. **Changement de numéro de téléphone** : proposition, nouvelle vérification par code sur l'ancien et le nouveau numéro, historique conservé.
+3. **Partitionnement dès le départ** : proposition, oui pour `messages` et `audit_log` (plus simple à faire tôt), plus tard pour le reste.
+4. **Durée de conservation des signalements clos et des extraits** : proposition, 12 mois, à valider avec un juriste.
+5. **Chiffrement du numéro** : proposition, au niveau de l'application, clé gérée hors de la base.
+6. **Appareils** : proposition, 3 appareils actifs par compte, le plus ancien est déconnecté au-delà.
 
 ## 17. Ordre de mise en œuvre proposé
 
