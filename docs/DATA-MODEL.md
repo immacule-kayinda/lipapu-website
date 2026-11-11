@@ -237,4 +237,6 @@ Notes de l'étape 6 : Joga+ est préparé mais inactif, sans prix ni devise (dé
 
 Notes de l'étape 7 : un match ne porte qu'une demande ou un couple en cours ; une personne ne peut être que dans un couple actif à la fois (déclencheur en base) ; l'activation exige les deux confirmations ; la mise en pause des profils est faite par l'application ; la liste d'attente exige un consentement daté ; `couple_games` est préparée, non utilisée en v1.
 
+Notes de l'étape 8 (prompts) : 30 questions semées en français seulement (brouillon à relire ; lingala et anglais à compléter) ; une question ne sert qu'une fois par personne (contrainte en base) ; le profil n'est `visible` qu'avec `prompts_required` réponses (3 par défaut, configuration) en plus des photos ; longueur min et max lues de la configuration.
+
 Chaque étape donne une migration relue, avec son plan de retour arrière.
