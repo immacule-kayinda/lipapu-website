@@ -176,7 +176,7 @@ Suppression demandée : le compte passe à `deletion_pending` (délai de grâce 
 | Donnée | Règle |
 |---|---|
 | Profil, réponses, préférences, appareils, jetons | supprimés |
-| Photos (base et fichiers R2) | supprimées |
+| Photos (base et fichiers Google Cloud Storage) | supprimées |
 | Selfies de vérification | supprimés à la décision, 7 jours au plus ; jamais conservés après |
 | Messages envoyés | supprimés (ou rendus anonymes si un signalement est en cours) |
 | Likes, passes, matchs, conversations | supprimés pour la personne ; la conversation disparaît pour l'autre côté |

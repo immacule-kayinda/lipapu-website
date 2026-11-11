@@ -33,7 +33,7 @@
 | Site et admin | Next.js |
 | Backend | TypeScript, NestJS, architecture orientée services (un seul code) |
 | Base de données | PostgreSQL avec PostGIS ; Redis pour files, quotas et temps réel |
-| Hébergement | Railway ; photos sur Cloudflare R2 ; Cloudflare devant |
+| Hébergement | Railway ; photos et selfies sur Google Cloud Storage (décision du 2026-11-11, remplace Cloudflare R2) ; Cloudflare devant (DNS, WAF) |
 | Authentification | OTP téléphone et OAuth (Apple, Google) |
 | Vérification de profil v1 | Selfie avec défi aléatoire, pré-tri automatique, validation humaine dans l'admin. AWS Rekognition préparé derrière une interface commune, désactivé |
 | Modération photo | Google Cloud Vision SafeSearch à l'upload |
@@ -131,3 +131,4 @@ Paiement et abonnement · messages vocaux · appels audio et vidéo · vérifica
 | 2026-11-10 | Brouillon du modèle de données (`DATA-MODEL.md`) |
 | 2026-11-10 | Décisions sur le modèle : date de naissance exacte à affichage limité ; suppression avec 14 jours de grâce ; commune seulement ; « Nous sommes en couple » dès la v1 d'un commun accord ; un seul like par personne |
 | 2026-11-10 | Réponses aux six questions du modèle de données ; migrations de l'étape 1 écrites et testées (backend) |
+| 2026-11-11 | Les photos et selfies sont stockés sur Google Cloud Storage (au lieu de Cloudflare R2) ; la modération reste Google Cloud Vision. Interface `StorageProvider` inchangée |

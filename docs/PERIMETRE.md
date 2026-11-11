@@ -99,7 +99,7 @@ Admin / Site  ──►        │
                          │       Redis            Workers asynchrones :
                          │   (pub/sub, présence)   • matching / feed
                          │                         • médias + modération
-                         └─► Cloudflare R2 + CDN   • notifications
+                         └─► Google Cloud Storage  • notifications
                               (photos, selfies)    • anti-fraude / analytics
 ```
 
@@ -110,14 +110,14 @@ Admin / Site  ──►        │
 - **Workers** : tout ce qui est lent ou asynchrone (images, notifications, feeds), avec retries et dead-letter queue.
 - **Outbox** : chaque action métier écrit son événement dans la même transaction (`LikeCreated`, `MatchCreated`, `MessageSent`, `MediaUploaded`, `ReportFiled`, `VerificationSubmitted`). Un relais le publie ensuite.
 - **PostgreSQL + PostGIS** : source de vérité ; table des messages partitionnée ; PostGIS pour ouvrir d'autres villes sans refonte.
-- **Médias** : upload direct vers R2 par URL signée → pipeline asynchrone (redimensionnement, WebP, SafeSearch, hash anti-doublons) → profil visible seulement après validation.
+- **Médias** : upload direct vers Google Cloud Storage par URL signée → pipeline asynchrone (redimensionnement, WebP, SafeSearch, hash anti-doublons) → profil visible seulement après validation.
 - **Push** : Expo Push Service (FCM / APNs).
 - **Observabilité** : OpenTelemetry, Sentry, logs structurés, PostHog (analytics produit).
 
 ### Hébergement (Railway)
 
 - Un service Railway par application (api-core, realtime-gateway, workers, cron) ; réseau privé entre eux.
-- Postgres Railway (PostGIS via template) : **sauvegardes quotidiennes automatisées vers R2** et plan de restauration testé (pas de haute disponibilité managée).
+- Postgres Railway (PostGIS via template) : **sauvegardes quotidiennes automatisées vers Google Cloud Storage** et plan de restauration testé (pas de haute disponibilité managée).
 - L'architecture ne dépend pas de Railway : migration vers un Postgres managé possible.
 
 ### Contraintes terrain (Kinshasa)

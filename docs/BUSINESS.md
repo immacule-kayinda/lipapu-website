@@ -114,7 +114,7 @@ Rapport complet : `Paiements et marché Joga Kinshasa 2.md` (dans le repo `backe
 - Texte de base : Code du numérique (ordonnance-loi 23/010 du 13 mars 2023), titre III sur les données personnelles.
 - **Consentement préalable et explicite**, que le responsable doit pouvoir prouver.
 - **La religion est en principe une donnée interdite**, avec des exceptions dont le consentement pour une finalité précise. Cela confirme notre choix : religion optionnelle, consentement explicite.
-- **Transfert à l'étranger** (Railway, Cloudflare R2) : protection équivalente exigée.
+- **Transfert à l'étranger** (Railway, Google Cloud Storage) : protection équivalente exigée.
 - L'autorité de protection des données prévue par le Code n'est probablement pas en place (sources contradictoires). Amendes administratives de 3 000 à 70 000 $, sans cas d'application connu.
 - Paiements : la banque centrale régule ; un agrégateur agréé (Paymetrust, juillet 2025) existe. Utiliser un agrégateur agréé évite probablement d'avoir sa propre licence, **non confirmé**.
 - TVA standard : 16 %. Le régime applicable aux services numériques de non-résidents est **contradictoire dans les sources**.
