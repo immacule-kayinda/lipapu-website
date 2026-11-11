@@ -239,4 +239,6 @@ Notes de l'étape 7 : un match ne porte qu'une demande ou un couple en cours ; u
 
 Notes de l'étape 8 (prompts) : 30 questions semées en français seulement (brouillon à relire ; lingala et anglais à compléter) ; une question ne sert qu'une fois par personne (contrainte en base) ; le profil n'est `visible` qu'avec `prompts_required` réponses (3 par défaut, configuration) en plus des photos ; longueur min et max lues de la configuration.
 
+Notes de l'étape 9 (découverte) : le lot du jour est composé à la première demande de la journée (jour de Kinshasa), pas encore par un worker de nuit ; filtres éliminatoires (genre croisé, tranches d'âge des deux côtés, jamais aimé, passé, bloqué ni en match, profil visible), score pondéré avec les poids `match_weight_*` de la configuration (la réciprocité se limite pour l'instant à « m'a déjà aimé » et la proximité à la même commune, les centres des communes n'étant pas renseignés), plafond d'exposition par jour, assouplissement progressif (commune, puis profils déjà présentés) pour ne pas servir un lot vide ; le profil complet n'est accessible que pour un membre d'un lot des 3 derniers jours ou ayant aimé la personne ; un champ est masqué quand `field_visibility[clé]` vaut `false` (clé = colonne sans `_code` ni `_cm`).
+
 Chaque étape donne une migration relue, avec son plan de retour arrière.
