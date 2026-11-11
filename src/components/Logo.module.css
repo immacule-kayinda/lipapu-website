@@ -1,0 +1,17 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--layout-min-touch-target);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.mark {
+  width: var(--space-7);
+  height: var(--space-7);
+}
+
+.word {
+  line-height: 1;
+}

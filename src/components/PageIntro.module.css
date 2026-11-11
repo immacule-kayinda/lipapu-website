@@ -1,0 +1,16 @@
+.intro {
+  padding-block: var(--space-9) var(--space-7);
+}
+
+.overline {
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  margin-bottom: var(--space-4);
+}
+
+.lead {
+  margin-bottom: 0;
+  font-size: var(--type-body-l-size);
+}
