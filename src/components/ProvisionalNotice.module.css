@@ -1,0 +1,11 @@
+.notice {
+  max-width: var(--site-measure);
+  margin: 0 0 var(--space-7);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  font-weight: var(--type-label-weight);
+}

@@ -1,0 +1,17 @@
+.page {
+  padding-block: var(--space-10);
+}
+
+.title {
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.body {
+  margin-bottom: var(--space-7);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-block-gap);
+}
