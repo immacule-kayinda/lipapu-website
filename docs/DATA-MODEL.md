@@ -255,3 +255,5 @@ Notes de l'étape 14 (signalement et blocage) : un signalement vise un profil, u
 
 Notes de l'étape 15 (code de connexion désactivable en test) : `OTP_BYPASS=true` supprime l'envoi du code et accepte `OTP_TEST_CODE` pour n'importe quel numéro ; réservé à `DEPLOY_ENV=development` ou `staging` (le démarrage est refusé en production, y compris par défaut), avec un avertissement dans les journaux ; les limites d'essais et le blocage restent actifs.
 
+Notes de l'étape 16 (liste d'attente) : `POST /v1/waitlist` reçoit les inscriptions relayées par le serveur du site (jamais le navigateur) : contact (e-mail en minuscules ou numéro E.164) chiffré par l'application, dédoublonné par empreinte HMAC, consentement explicite obligatoire et daté ; un contact déjà inscrit renvoie la même réponse (on ne révèle pas qui est inscrit) ; limitation de débit par adresse ; la désinscription et la notification des inscrits viendront avec l'admin.
+
