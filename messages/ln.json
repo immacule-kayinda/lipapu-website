@@ -286,7 +286,15 @@
     "steps": {
       "app": {
         "title": "Depuis l'application",
-        "body": "Ouvrez Joga, allez dans les réglages, puis choisissez « Supprimer mon compte » et confirmez. Chemin exact à confirmer au lancement."
+        "body": "Ouvrez Joga, allez dans l'onglet Profil, choisissez « Supprimer mon compte », cochez la confirmation puis validez."
+      },
+      "grace": {
+        "title": "Un délai pour changer d'avis",
+        "body": "Votre compte n'est pas effacé tout de suite : vous avez 14 jours. Pendant ce délai, votre profil n'est plus visible, et vous pouvez annuler depuis la même page. Passé ce délai, la suppression est définitive."
+      },
+      "export": {
+        "title": "Récupérer vos données avant",
+        "body": "Dans l'application, ouvrez Profil, puis « Confidentialité et données », puis « Exporter mes données » : vous obtenez une copie lisible de ce que Joga conserve sur vous."
       },
       "contact": {
         "title": "Sans accès à l'application",
@@ -294,7 +302,7 @@
       }
     },
     "whatTitle": "Ce qui est supprimé",
-    "what": "Votre profil, vos photos, vos conversations et vos préférences sont supprimés. Certaines données peuvent être conservées si la loi l'exige. Délais et détails à définir.",
+    "what": "Votre profil, vos photos, vos réponses, vos likes, vos matchs, vos conversations et vos préférences sont supprimés, ainsi que les fichiers de vos photos. Votre selfie de vérification, s'il y en a un, est supprimé dès la décision et au plus tard sous 7 jours. Certaines données peuvent être conservées sans lien avec vous (par exemple un signalement ou une pièce comptable) quand la loi ou la sécurité l'exige. Délais précis à confirmer.",
     "waitlist": "Pour être retiré de la liste d'attente, écrivez-nous à la même adresse en indiquant le numéro ou l'e-mail utilisé."
   },
   "notFound": {

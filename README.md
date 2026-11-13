@@ -24,9 +24,9 @@ npm run dev        # http://localhost:3000
 
 Variables d'environnement (voir `.env.example`) :
 
-| Variable           | Rôle                                                                                           |
-| ------------------ | ---------------------------------------------------------------------------------------------- |
-| `SITE_URL`         | URL publique (sitemap, robots, Open Graph). Lue au build.                                      |
+| Variable           | Rôle                                                                                                                                        |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SITE_URL`         | URL publique (sitemap, robots, Open Graph). Lue au build.                                                                                   |
 | `WAITLIST_API_URL` | API du backend qui reçoit la liste d'attente : `https://api.joga.kayinda.dev/v1/waitlist`. Absente : le formulaire répond « indisponible ». |
 
 ## Scripts
