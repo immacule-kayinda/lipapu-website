@@ -7,7 +7,7 @@ import styles from './suppression.module.css';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const STEPS = ['app', 'contact'] as const;
+const STEPS = ['app', 'grace', 'export', 'contact'] as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;

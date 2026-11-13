@@ -285,16 +285,24 @@
     "stepsTitle": "Marche à suivre",
     "steps": {
       "app": {
-        "title": "Depuis l'application",
-        "body": "Ouvrez Joga, allez dans les réglages, puis choisissez « Supprimer mon compte » et confirmez. Chemin exact à confirmer au lancement."
+        "title": "From the app",
+        "body": "Open Joga, go to the Profile tab, choose “Delete my account”, tick the confirmation and confirm."
+      },
+      "grace": {
+        "title": "Time to change your mind",
+        "body": "Your account is not erased immediately: you have 14 days. During that time your profile is hidden, and you can cancel from the same page. After that, deletion is permanent."
+      },
+      "export": {
+        "title": "Get your data first",
+        "body": "In the app, open Profile, then “Privacy and data”, then “Export my data”: you get a readable copy of what Joga keeps about you."
       },
       "contact": {
-        "title": "Sans accès à l'application",
-        "body": "Écrivez-nous à {contact} depuis l'adresse ou avec le numéro associé à votre compte, en indiquant « Suppression de compte »."
+        "title": "Without access to the app",
+        "body": "Write to us at {contact} from the address or with the number linked to your account, stating “Account deletion”."
       }
     },
     "whatTitle": "Ce qui est supprimé",
-    "what": "Votre profil, vos photos, vos conversations et vos préférences sont supprimés. Certaines données peuvent être conservées si la loi l'exige. Délais et détails à définir.",
+    "what": "Your profile, photos, answers, likes, matches, conversations and preferences are deleted, along with your photo files. Your verification selfie, if any, is deleted as soon as a decision is made and within 7 days at most. Some data may be kept with no link to you (for example a report or an accounting record) when the law or safety requires it. Exact periods to be confirmed.",
     "waitlist": "Pour être retiré de la liste d'attente, écrivez-nous à la même adresse en indiquant le numéro ou l'e-mail utilisé."
   },
   "notFound": {
